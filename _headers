@@ -1,2 +1,2 @@
 /*
-Content-Security-Policy: frame-ancestors 'self' https://af1webstvpre1.pages.dev/
+Content-Security-Policy: frame-ancestors 'self' https://af1webstvpre1.pages.dev; sandbox allow-same-origin;
