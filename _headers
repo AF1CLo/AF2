@@ -1,1 +1,1 @@
-/* Content-Security-Policy: default-src 'self'; frame-ancestors 'self' https://*.pages.dev; img-src *; script-src 'unsafe-inline' 'unsafe-eval' https:; style-src 'unsafe-inline' https:; */
+https://af1webstvpre1.pages.dev/ Content-Security-Policy: sandbox allow-scripts allow-same-origin allow-popups allow-forms;
