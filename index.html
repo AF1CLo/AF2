@@ -28,7 +28,7 @@
         .btn-canal-action:hover{background:#218838;transform:scale(1.05)}
         .footer{background:#000;color:#0f0;text-align:center;padding:16px;font-size:0.9em}
     </style>
-</head>=
+</head>
 <body>
 
 <header class="header">
@@ -41,8 +41,13 @@
 
 <div class="main-content">
     <div class="iframe-container" id="player-container">
-        <iframe id="main-player" src="https://dlhd.dad/stream/stream-445.php?disableads=1&no-reload=1&autoplay=1" 
-                allowfullscreen allow="encrypted-media" referrerpolicy="no-referrer" loading="lazy"></iframe>
+        <iframe id="main-player" 
+                src="https://dlhd.dad/stream/stream-445.php?disableads=1&no-reload=1&autoplay=1" 
+                allowfullscreen 
+                allow="encrypted-media" 
+                referrerpolicy="no-referrer" 
+                loading="lazy">
+        </iframe>
     </div>
 
     <div class="search-container">
@@ -50,8 +55,7 @@
     </div>
 
     <div class="channels-list" id="channels-list">
-        <!-- 100 CANALES (del 1 al 100) -->
-              <div class="channel-item"><div class="channel-logo"><img src="https://i.postimg.cc/P5CL0ncC/logo11-17-205545.png"></div><div class="channel-name">TNT Sports 1 UK -1</div><button class="btn-canal-action" onclick="changeChannel('https://tutvlive.xyz/tvtodo/mligacampeones.php','TNT Sports 1 UK -1')">VER CANAL</button></div>
+        <div class="channel-item"><div class="channel-logo"><img src="https://i.postimg.cc/P5CL0ncC/logo11-17-205545.png"></div><div class="channel-name">TNT Sports 1 UK -1</div><button class="btn-canal-action" onclick="changeChannel('https://tutvlive.xyz/tvtodo/mligacampeones.php','TNT Sports 1 UK -1')">VER CANAL</button></div>
 <div class="channel-item"><div class="channel-logo"><img src="https://i.postimg.cc/P5CL0ncC/logo11-17-205545.png"></div><div class="channel-name">TNT Sports 1 UK -2</div><button class="btn-canal-action" onclick="changeChannel('https://miztv.top/total/stream-521.php','TNT Sports 1 UK -2')">VER CANAL</button></div>
 <div class="channel-item"><div class="channel-logo"><img src="https://i.postimg.cc/P5CL0ncC/logo11-17-205545.png"></div><div class="channel-name">TNT Sports 1 UK -3</div><button class="btn-canal-action" onclick="changeChannel('https://tvpass.org/channel/espn-deportes','TNT Sports 1 UK -3')">VER CANAL</button></div>
 <div class="channel-item"><div class="channel-logo"><img src="https://i.postimg.cc/P5CL0ncC/logo11-17-205545.png"></div><div class="channel-name">TNT Sports 1 UK -4</div><button class="btn-canal-action" onclick="changeChannel('https://dabac.link/ch?id=29','TNT Sports 1 UK -4')">VER CANAL</button></div>
@@ -162,13 +166,25 @@
 <script>
     function changeChannel(url, name) {
         const container = document.getElementById('player-container');
-        container.innerHTML = `<iframe id="main-player" src="${url}" allowfullscreen allow="encrypted-media" 
-                               referrerpolicy="no-referrer" loading="lazy"></iframe>`;
+        
+        // CORRECCIÓN FINAL: Eliminación completa del atributo sandbox
+        container.innerHTML = `<iframe id="main-player" 
+                                    src="${url}" 
+                                    allowfullscreen 
+                                    allow="encrypted-media" 
+                                    referrerpolicy="no-referrer" 
+                                    loading="lazy">
+                               </iframe>`;
+        
+        // Scroll y otros scripts
         setTimeout(() => {
             const headerHeight = document.querySelector('.header').offsetHeight;
             const pos = container.getBoundingClientRect().top + window.pageYOffset;
             window.scrollTo({top: pos - headerHeight - 10, behavior: 'smooth'});
         }, 200);
+        
+        // Opcional: Actualizar el título principal al cambiar de canal
+        document.querySelector('.header-title').innerText = name;
     }
 
     function filterChannels() {
